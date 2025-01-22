@@ -80,3 +80,12 @@ def binaryMetricsCompute(label: np.ndarray,
                          outSoftmax: np.ndarray) -> None:
     print(f'''Accuracy: {accuracy_score(label, outIndex)};\nROC AUC score: {roc_auc_score(label, outSoftmax[:, 1])}, {roc_auc_score(label, outSoftmax[:, 0])};\nF1: {f1_score(label, outIndex)}''')
     print(f'''Precision: {precision_score(label, outIndex)};\nRecall: {recall_score(label, outIndex)}''')
+
+def metricsIndicator(label: np.ndarray,
+                     pred: np.ndarray,
+                     softmax: np.ndarray) -> dict:
+    return {"Accuracy": accuracy_score(label, pred),
+            "ROC_AUC_score": roc_auc_score(label, softmax[:, 1]),
+            "F1": f1_score(label, pred),
+            "Precision": precision_score(label, pred),
+            "Recall": recall_score(label, pred)}
